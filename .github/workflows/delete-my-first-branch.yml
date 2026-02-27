@@ -3,7 +3,8 @@ name: Delete my-first-branch
 on:
   push:
     branches:
-      - copilot/delete-my-first-branch
+      - main
+  workflow_dispatch:
 
 permissions:
   contents: write
