@@ -1,0 +1,18 @@
+name: Delete my-first-branch
+
+on:
+  push:
+    branches:
+      - copilot/delete-my-first-branch
+
+permissions:
+  contents: write
+
+jobs:
+  delete-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete my-first-branch
+        run: gh api repos/${{ github.repository }}/git/refs/heads/my-first-branch -X DELETE || echo "Branch already deleted or does not exist"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
